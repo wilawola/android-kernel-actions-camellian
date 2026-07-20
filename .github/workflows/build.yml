@@ -30,10 +30,16 @@ jobs:
           make O=out camellia_defconfig
           make O=out -j$(nproc)
 
+      - name: List build outputs
+        run: |
+          ls -lh out/arch/arm64/boot || true
+          ls -lh out/arch/arm64/boot/dts || true
+
       - name: Upload kernel artifact
         uses: actions/upload-artifact@v4
         with:
           name: kernel-build
           path: |
-            out/arch/arm64/boot/Image.gz*
+            out/arch/arm64/boot/Image*
+            out/arch/arm64/boot/*.gz*
             out/arch/arm64/boot/dts/*.dtb
