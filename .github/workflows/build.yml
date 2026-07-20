@@ -34,4 +34,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kernel-build
-          path: out/arch/arm64/boot/Image.gz*
+          path: |
+            out/arch/arm64/boot/Image.gz*
+            out/arch/arm64/boot/dts/*.dtb
