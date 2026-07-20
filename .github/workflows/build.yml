@@ -32,7 +32,9 @@ jobs:
 
       - name: List build outputs
         run: |
+          echo "Boot directory:"
           ls -lh out/arch/arm64/boot || true
+          echo "DTB directory:"
           ls -lh out/arch/arm64/boot/dts || true
 
       - name: Upload kernel artifact
@@ -40,6 +42,4 @@ jobs:
         with:
           name: kernel-build
           path: |
-            out/arch/arm64/boot/Image*
-            out/arch/arm64/boot/*.gz*
-            out/arch/arm64/boot/dts/*.dtb
+            out/arch/arm64/boot/*
